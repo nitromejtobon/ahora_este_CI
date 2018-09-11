@@ -8,9 +8,7 @@ delete(objects) %delete a video input object from memory
 %-- 2. Configuracion de la captura de video -------------------------------
 %-------------------------------------------------------------------------
 vid=videoinput('winvideo',1,'YUY2_640x480');% Se captura un stream de video usando videoinput, con argumento
-% Se configura las opciones de adquision de video
 set(vid,'ReturnedColorSpace','rgb');%la imagen del video se va a tomar en modo RGB
-% set(vid,'FramesPerTrigger',1);
 set(vid,'TriggerRepeat',Inf);
 start(vid);
 x=100;
@@ -24,7 +22,6 @@ yb=randi(1000)*-1;
 yb1=randi(1000)*-1;
 %-------
 alto=50;ancho=50;
-%guitarraRead=imread('Guitarra.png');guitarraRead=imresize(guitarraRead,[480,640]);
 
 [guitarraRead,map0,guitarraTrans]=imread('Imagenes/Guitarra.png');
 [redNoteRead,map1,redTrans]=imread('Imagenes/rojo.png');
@@ -75,10 +72,9 @@ while( vid.FramesAcquired <= 10000)
     %imagen binaria BW, as� obtenemos todos los objetos que cumplan con la
     %mascara
     
-    %---------------------------------------
-    juego= (cdt2); 
+    %-------------------------------------- 
    
-    figure(1);imshow(juego);
+    figure(1);imshow(cdt2);
     
     
     hitBoxR=[x+14,yr+14,ancho,alto];
