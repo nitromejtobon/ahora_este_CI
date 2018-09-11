@@ -1,0 +1,12 @@
+clear all;close all;clc         % Limpia la ventana de comandos
+objects = imaqfind; %find video input objects in memory
+delete(objects) %delete a video input object from memory
+%--------------------------------------------------------------------------
+%-- 2. Configuracion de la captura de video -------------------------------
+%-------------------------------------------------------------------------
+vid=videoinput('winvideo',1,'YUY2_640x480');% Se captura un stream de video usando videoinput, con argumento
+% Se configura las opciones de adquision de video
+set(vid,'ReturnedColorSpace','rgb');%la imagen del video se va a tomar en modo RGB
+set(vid,'FramesPerTrigger',1);
+set(vid,'TriggerRepeat',Inf);
+start(vid);
