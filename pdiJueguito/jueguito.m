@@ -26,26 +26,34 @@ yb1=randi(1000)*-1;
 alto=50;ancho=50;
 %guitarraRead=imread('Guitarra.png');guitarraRead=imresize(guitarraRead,[480,640]);
 
-[guitarraRead,map0,guitarraTrans]=imread('Guitarra.png');
+[guitarraRead,map0,guitarraTrans]=imread('Imagenes/Guitarra.png');
+[redNoteRead,map1,redTrans]=imread('Imagenes/rojo.png');
+[greenNoteRead,map2,greenTrans]=imread('Imagenes/verde.png');
+[blueNoteRead,map3,blueTrans]=imread('Imagenes/azul.png');
 
-[redNoteRead,map1,redTrans]=imread('rojo.png');
-[greenNoteRead,map2,greenTrans]=imread('verde.png');
-[blueNoteRead,map3,blueTrans]=imread('azul.png');
+song=input('Ingrese\n1 Dejavu-Initial D\n2 El paso del gigante-Grupo soÃ±ador\n3 Raining blood-Slayer\n4 Scar tissue-RHCP');
 
-song=input('Ingrese 1 para dejavu y 2 para el paso del gigante  ');
-if(song ==1)
-    [cancion,hz] = audioread('InitialD-dejavu.mp3');
-    sound(cancion*0.07,hz)
-else
-    [cancion,hz] = audioread('Grupo Sonador   El Paso Del Gigante.mp3');
-    sound(cancion*0.07,hz)
-end    
+switch song
+case 1
+    [cancion,hz] = audioread('Canciones/Dejavu.mp3');
+case 2
+    [cancion,hz] = audioread('Canciones/ElPasoDelGigante.mp3');
+case 3
+    [cancion,hz] = audioread('Canciones/RainingBlood.mp3');
+case 4
+    [cancion,hz] = audioread('Canciones/ScarTissue.mp3');
+otherwise
+    disp('SelecciÃ³n no valida,se jugarÃ¡ con la primera canciÃ³n por bob@');
+    [cancion,hz] = audioread('Canciones/Dejavu.mp3');       
+end
+
+sound(cancion*0.07,hz)   
 puntos=20;
 while( vid.FramesAcquired <= 10000)   
     
     
-    cdt0 = getsnapshot(vid);%Capturamos la imagen de la cámara
-    cdt = flip(cdt0,2);%Aplicamos la función flip, que nos permite rotar la imagen y así evitar el efecto de espejo
+    cdt0 = getsnapshot(vid);%Capturamos la imagen de la cï¿½mara
+    cdt = flip(cdt0,2);%Aplicamos la funciï¿½n flip, que nos permite rotar la imagen y asï¿½ evitar el efecto de espejo
     cdt2 = cdt;%Realizamos una copia de la imagen  
     
     
@@ -60,11 +68,11 @@ while( vid.FramesAcquired <= 10000)
     justGreen = g - b/2 - r/2;%A la capa verde le restamos las capas roja y azul
     %dividas entre 2 cada una, esto con la finalidad de obtener de la
     %imagen el color verde presente en la misma.
-    bw = justGreen > 33;%Binarizamos la imagen, obteniendo así los objetos
+    bw = justGreen > 33;%Binarizamos la imagen, obteniendo asï¿½ los objetos
     %donde el color verde se encuentre presente
     cdt = bwareaopen(bw, 20);%La Funcion bwareaopen elimina todos los 
-    %componentes conectados (objetos) que tienen menos de Ppíxeles de la 
-    %imagen binaria BW, así obtenemos todos los objetos que cumplan con la
+    %componentes conectados (objetos) que tienen menos de Ppï¿½xeles de la 
+    %imagen binaria BW, asï¿½ obtenemos todos los objetos que cumplan con la
     %mascara
     
     %---------------------------------------
@@ -96,17 +104,17 @@ while( vid.FramesAcquired <= 10000)
     
  
     hold off
-    s  = regionprops(cdt, {'centroid','area'});%Obtenemos las propiedades 'centroide' y 'área' de cada objeto que este blanco en BW
-    if isempty(s)%Condicional que se encargará de reconocer si el vector con objetos 
+    s  = regionprops(cdt, {'centroid','area'});%Obtenemos las propiedades 'centroide' y 'ï¿½rea' de cada objeto que este blanco en BW
+    if isempty(s)%Condicional que se encargarï¿½ de reconocer si el vector con objetos 
         %que cumplen con la mascara de reconocimiento, se encuentra vacio.
         
     else
         
-        [~, id] = max([s.Area]);  %Obtenemos el ID del objeto cuya área sea la mayor en el vector de objetos
+        [~, id] = max([s.Area]);  %Obtenemos el ID del objeto cuya ï¿½rea sea la mayor en el vector de objetos
         
-        xc = s(id).Centroid(1) - 5;%Coordenada en X para el CUADRO que identificará al jugador
-        yc = s(id).Centroid(2) - 5;%Coordenada en Y para el CUADRO que identificará al jugador
-        p = [xc, ((40*xc)/240)+337, 13, 13];%Creación del vector posición para el jugador
+        xc = s(id).Centroid(1) - 5;%Coordenada en X para el CUADRO que identificarï¿½ al jugador
+        yc = s(id).Centroid(2) - 5;%Coordenada en Y para el CUADRO que identificarï¿½ al jugador
+        p = [xc, ((40*xc)/240)+337, 13, 13];%Creaciï¿½n del vector posiciï¿½n para el jugador
         r = rectangle('Position',p,'EdgeColor','b','LineWidth',2);   
         
      if bboxOverlapRatio(p,hitBoxR)>0
@@ -137,7 +145,7 @@ while( vid.FramesAcquired <= 10000)
         
     end
     %Analizar colisiones
-    %Actualización de posición en y de las notas musicales
+    %Actualizaciï¿½n de posiciï¿½n en y de las notas musicales
     if(yr>481)
         yr=randi(150)*-1;
         puntos = puntos-0.5*puntos;
@@ -170,7 +178,7 @@ while( vid.FramesAcquired <= 10000)
     yb1=yb1+velocidad;
     
     if puntos < 1
-        text(190,210,'GAME OVER','Color','b','FontSize', 40);%Texto que se mostrará cuando el jugador pierda
+        text(190,210,'GAME OVER','Color','b','FontSize', 40);%Texto que se mostrarï¿½ cuando el jugador pierda
         
         break
     end    
@@ -182,7 +190,6 @@ while( vid.FramesAcquired <= 10000)
     
 end
 clear sound;
-
 %--------------------------------------------------------------------------
 %---------------------------  FIN DEL PROGRAMA ----------------------------
 %--------------------------------------------------------------------------
