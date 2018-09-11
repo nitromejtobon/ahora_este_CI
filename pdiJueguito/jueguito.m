@@ -28,7 +28,7 @@ alto=50;ancho=50;
 [greenNoteRead,map2,greenTrans]=imread('Imagenes/verde.png');
 [blueNoteRead,map3,blueTrans]=imread('Imagenes/azul.png');
 
-song=input('Ingrese\n1 Dejavu-Initial D\n2 El paso del gigante-Grupo soñador\n3 Raining blood-Slayer\n4 Scar tissue-RHCP');
+song=input('Ingrese\n1 Dejavu-Initial D\n2 El paso del gigante-Grupo soñador\n3 Raining blood-Slayer\n4 Scar tissue-RHCP\n');
 
 switch song
 case 1
