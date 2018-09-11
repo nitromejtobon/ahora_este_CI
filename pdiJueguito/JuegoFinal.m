@@ -10,8 +10,8 @@ set(vid,'FramesPerTrigger',1);
 set(vid,'TriggerRepeat',Inf);
 start(vid);
 while( vid.FramesAcquired <= 10000)
-snapshot = getsnapshot(vid);%Capturamos la imagen de la cámara
-cdt = flip(snapshot,2);%Aplicamos la función flip, que nos permite rotar la imagen y así evitar el efecto de espejo
+snapshot = getsnapshot(vid);%Capturamos la imagen de la cï¿½mara
+cdt = flip(snapshot,2);%Aplicamos la funciï¿½n flip, que nos permite rotar la imagen y asï¿½ evitar el efecto de espejo
 cdt2 = cdt;[fill,col,cap]=size(cdt2);%Realizamos una copia de la imagen
 
 
@@ -19,3 +19,4 @@ cdt2 = cdt;[fill,col,cap]=size(cdt2);%Realizamos una copia de la imagen
 guitarra=imread('Guitarra.png');guitarra=imresize(guitarra,[fill,col]);
 guitarra = (guitarra*1.5)+(cdt2*0.8); 
 end
+stop(vid);
