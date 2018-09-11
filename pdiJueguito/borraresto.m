@@ -30,7 +30,7 @@ set(vid,'TriggerRepeat',Inf);%Establece el triggerRepeat en "infinito"
 start(vid);%Comienza a capturar el vídeo
 
 %--------------------------------------------------------------------------
-%-- 3. Inicialización de variables-----------------------------------------
+%-- 3. Inicializaci�n de variables-----------------------------------------
 %--------------------------------------------------------------------------
 %-------Carga de imágenes y canciones para el juego------------------------
 [guitarraRead,map0,guitarraTrans]=imread('Imagenes/Guitarra.png');%Carga la guitarra de interfaz
@@ -106,7 +106,7 @@ while(1) %Ciclo de juegoo
     s  = regionprops(snap, {'centroid','area'});%Obtenemos las propiedades 'centroide' y '�rea' de cada objeto que este blanco en BW
     if isempty(s)%Condicional que se encargar� de reconocer si el vector con objetos 
         %que cumplen con la mascara de reconocimiento, se encuentra vacio.
-        text(0,20,'No se detecta ningún objeto verde','Color','b','FontSize', 14);
+        text(190,210,'No se detecta ning�n objeto verde','Color','b','FontSize', 14);
     else
         
         [~, id] = max([s.Area]);  %Obtenemos el ID del objeto cuya �rea sea la mayor en el vector de objetos 
