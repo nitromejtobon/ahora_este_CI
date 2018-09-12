@@ -115,7 +115,7 @@ while(1) %Ciclo de juegoo
         yc = s(id).Centroid(2) - 5;%Coordenada en Y para el CUADRO que identificar� al jugador
         p = [xc, ((40*xc)/240)+337, 13, 13];%Creaci�n del vector posici�n para el jugador
         hold on
-        mano = image(xc-100,((40*xc)/240)+270,manoRead);set(mano, 'AlphaData', manoTrans);
+        mano = image(xc-50,((40*xc)/240)+337,manoRead);set(mano, 'AlphaData', manoTrans);
         hold off
         %r = rectangle('Position',p,'EdgeColor','y','LineWidth',2);   
         
