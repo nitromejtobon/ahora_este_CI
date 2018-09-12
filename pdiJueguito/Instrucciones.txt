@@ -1,0 +1,17 @@
+Juan Pablo Jaramillo Tobon y Daniel Rivera
+
+Requisitos mínimos:
+1)Poseer una versión de Matlab superior a la 2010
+2)Tener a disposición una cámara digital con minima resolución de grabación de 640x480
+3)Memoria ram de 4gb
+
+Instrucciones de uso:
+1)Revisar que cumple con los requisitos mínimos
+2)Verificar que el directorio de trabajo en Matlab es el indicado donde se encuentran todos los archivos de este proyecto.
+3)Dar click en el botón de Run en Matlab
+4)Seleccionar la canción con la que se desea jugar
+5)Tan pronto aparezca la figura de la grabación, presente su objeto verde para que proceda a identificarlo y comience el juego
+5)Mueva su objeto horizontalmente para desplazarse con la mano en el mastil de la guitarra y atrapando las notas
+6)Atrapar una nota concede 10 puntos, no atrapar una nota decrementa estos porcentualmente
+7)El juego termina cuando logras completar la canción u obtienes menos de 1 punto
+8)En caso de interrumpir bruscamente el juego y que la canción continue sonando, introduzca"stop(player)" en consola.

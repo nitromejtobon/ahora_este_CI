@@ -64,7 +64,7 @@ alto=50;ancho=50;x=100;desplazamiento = 10;puntos=20;%Inicializa los valores de 
 %--------------------------------------------------------------------------
 %---4. Inicio del juego----------------------------------------------------
 %--------------------------------------------------------------------------
-player = audioplayer(cancion, hz);%--Guarda la matriz de música en la variable player
+player = audioplayer(cancion*0.05, hz);%--Guarda la matriz de música en la variable player
 play(player);%Comienza a reproducir la canción
 while(1) %Ciclo de juegoo
     %---------Obtener captura para procesar-------------------------------
@@ -97,8 +97,9 @@ while(1) %Ciclo de juegoo
         p = [xc, ((40*xc)/240)+337, 13, 13];%Creación del vector posicionn de la mano
         
         
+        
         %---------------------------Elementos para enseñar en pantalla-----------------------
-        txt = ['Puntos: ',num2str(puntos)];
+        txt = ['Puntos: ',num2str(puntos)];% definimos txt como la catidad de puntos alcual
         text(0,20,txt,'Color','black','FontSize', 14);
         hold on%Hold on se usa para posicionar encima de la figura actual
         guitarra = image(0,0,guitarraRead);set(guitarra, 'AlphaData', guitarraTrans);%Superpone la guitarra y le aplica su transparencia
@@ -192,7 +193,7 @@ while(1) %Ciclo de juegoo
     flushdata(vid,'triggers');%Limpia el buffer
 end
 %------Cierre del juego-----------------------
-clear sound;%Termina la reproducción de la canción
+stop(player);%Termina la reproducción de la canción
 stop(vid);%Finaliza la grabación
 %--------------------------------------------------------------------------
 %---------------------------  FIN DEL PROGRAMA ----------------------------
